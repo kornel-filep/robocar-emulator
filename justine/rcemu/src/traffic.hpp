@@ -110,8 +110,8 @@ public:
 
           for ( auto noderef : iter->second.m_alist )
             {
-              AntCar::alist[iter->first].push_back ( 1 );
-              AntCar::alist_evaporate[iter->first].push_back ( 1 );
+              AntCar::alist[iter->first].first.push_back ( 1 );
+              AntCar::alist_evaporate[iter->first].first.push_back ( 1 );
             }
         }
 
@@ -307,6 +307,19 @@ public:
   osmium::unsigned_object_id_type alist ( osmium::unsigned_object_id_type from, int to ) const
   {
     shm_map_Type::iterator iter=shm_map->find ( from );
+    //Adding a debug part to our alist.
+#ifdef DEBUG
+    int lsize = iter->second.m_plist.size();
+    std::cout << "Listsize = " << lsize << "\n";
+
+    for (int i = 0; i < listsize; i++){
+      std::cout << "Message: " << iter->second.m_alist[to] << " ";
+      std::cout << iter->second.m_alist[i] << " ";
+      std::cout << iter->second.m_plist[i] << "\n";
+    }
+    std::cout << "\n";
+#endif
+
     return iter->second.m_alist[to];
   }
 

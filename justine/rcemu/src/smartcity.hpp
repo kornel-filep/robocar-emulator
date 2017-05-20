@@ -59,6 +59,13 @@ typedef boost::interprocess::allocator<unsigned int, segment_manager_Type> uint_
 typedef boost::interprocess::vector<unsigned int, uint_allocator> uint_vector;
 typedef boost::interprocess::allocator<uint_vector, segment_manager_Type> uint_vector_allocator;
 
+//Adding in a new allocator and vector, to try and figure out things.
+//making them not camelcased just to match style.
+
+typedef boost::interprocess::allocator<double, segment_manager_Type> d_allocator;
+typedef boost::interprocess::vector<double, d_allocator> d_vector;
+
+
 class SharedData
 {
 
@@ -67,11 +74,19 @@ public:
   uint_vector m_salist;
   uint_vector m_palist;
 
+  //Adding in probabilities list.
+  //the type is our new vector. 
+  d_vector m_plist;
+  
   int lon;
   int lat;
 
+  //We add our m_plist to share.
+  //Not quite sure whats void_alloc...
+  //But Im gonna use it still. Will figure out later tho.
+
   SharedData ( const void_allocator &void_alloc )
-    :  m_alist ( void_alloc ), m_salist ( void_alloc ), m_palist ( void_alloc )
+    :  m_alist ( void_alloc ), m_salist ( void_alloc ), m_palist ( void_alloc ), m_plist( void_alloc )
   {}
 };
 
@@ -164,10 +179,11 @@ public:
     try
       {
 
+        //Cool, so there is an iterator we discussed in class.
         for ( AdjacencyList::iterator iter=alist.begin();
               iter!=alist.end(); ++iter )
           {
-
+              //Our shared data? as v like Vendetta.
             SharedData v ( alloc_obj );
 
             /*
@@ -177,24 +193,33 @@ public:
             v.lon = m_waynode_locations[ iter->first ].x();
             v.lat = m_waynode_locations[ iter->first ].y();
 
-            for ( WayNodesVect::iterator noderefi = iter->second.begin();
-                  noderefi!= iter->second.end(); ++noderefi )
+            for ( WayNodesVect::iterator noderefi = iter->second.first.begin();
+                  noderefi!= iter->second.first.end(); ++noderefi )
               {
 
                 v.m_alist.push_back ( *noderefi );
                 v.m_salist.push_back ( 0u );
-                v.m_palist.push_back ( palist[iter->first][std::distance ( iter->second.begin(), noderefi )]+1 );
+                v.m_palist.push_back ( palist[iter->first].first[std::distance ( iter->second.first.begin(), noderefi )]+1 );
               }
+
+            //So we are iterating through. After thinking it through,
+            //Thats the place for our probability part.
+              for ( ProbabilityVect::iterator p = iter->second.second.begin();
+                 p!= iter->second.second.end(); ++p )
+                {
+                v.m_plist.push_back ( *p );
+                }
+
 
             map_pair_Type p ( iter->first, v );
             shm_map_n->insert ( p );
           }
 
-#ifdef DEBUG
+//#ifdef DEBUG
         std::cout << " alist.size = " << alist.size() << " (deg- >= 1)"<< std::endl;
         std::cout << " SHM/alist.size = " << shm_map_n->size() << std::endl;
-#endif
-
+//#endif
+        printMatrix(alist)
 
       }
     catch ( boost::interprocess::bad_alloc e )
@@ -244,6 +269,34 @@ public:
     delete segment;
     delete m_remover;
   }
+
+  //We are going to print out our Adjacency Matrix to a file.
+    void printMatrix(AdjacencyList alist){
+
+   std::fstream adjacencySparseMatrixFile ( "../adjacencymatrix.txt", std::ios_base::out );
+
+    for (AdjacencyList::iterator alist_iter = alist.begin(); alist_iter != alist.end(); alist_iter++){
+
+      WayNodesProbability actNodeProbabilities = alist_iter->second;
+
+      for (int i = 0; i < actNodeProbabilities.first.size(); i++){
+    
+        adjacencyMatrixFile << alist_iter->first;
+        adjacencyMatrixFile << " ";
+    
+        adjacencyMatrixFile << actNodeProbabilities.first.at(i);
+        adjacencyMatrixFile << " ";
+        adjacencyMatrixFile << actNodeProbabilities.second.at(i);
+        adjacencyMatrixFile << "\n";
+      }
+
+  }
+
+    adjacencySparseMatrixFile.close();
+  }
+
+
+
 
   std::string node2way ( osmium::unsigned_object_id_type node )
   {
