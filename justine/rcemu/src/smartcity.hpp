@@ -200,7 +200,7 @@ public:
     catch ( boost::interprocess::bad_alloc e )
       {
 
-        std::cerr << " Out of shared memory..." << std::cerr;
+        std::cerr << " Out of shared memory..." << std::endl;
         std::cout << e.what() <<std::endl;
 
         std::cerr

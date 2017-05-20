@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<JDepend>
+    <Packages>
+
+        <Package name="java.awt">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.awt.event">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.awt.geom">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.awt.image">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.io">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.lang">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.net">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="java.util.logging">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.imageio">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="javax.swing">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="justine.robocar">
+            <Stats>
+                <TotalClasses>13</TotalClasses>
+                <ConcreteClasses>13</ConcreteClasses>
+                <AbstractClasses>0</AbstractClasses>
+                <Ca>0</Ca>
+                <Ce>14</Ce>
+                <A>0</A>
+                <I>1</I>
+                <D>0</D>
+                <V>1</V>
+            </Stats>
+
+            <AbstractClasses>
+            </AbstractClasses>
+
+            <ConcreteClasses>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$1
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$2
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$3
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$4
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$5
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$6
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.CarWindow$7
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.Loc
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.Traffic
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.WaypointCaught
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.WaypointGangster
+                </Class>
+                <Class sourceFile="CarWindow.java">
+                    justine.robocar.WaypointPolice
+                </Class>
+            </ConcreteClasses>
+
+            <DependsUpon>
+                <Package>java.awt</Package>
+                <Package>java.awt.event</Package>
+                <Package>java.awt.geom</Package>
+                <Package>java.awt.image</Package>
+                <Package>java.io</Package>
+                <Package>java.lang</Package>
+                <Package>java.net</Package>
+                <Package>java.util</Package>
+                <Package>java.util.logging</Package>
+                <Package>javax.imageio</Package>
+                <Package>javax.swing</Package>
+                <Package>org.jxmapviewer</Package>
+                <Package>org.jxmapviewer.input</Package>
+                <Package>org.jxmapviewer.viewer</Package>
+            </DependsUpon>
+
+            <UsedBy>
+            </UsedBy>
+        </Package>
+
+        <Package name="org.jxmapviewer">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.jxmapviewer.input">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+
+        <Package name="org.jxmapviewer.viewer">
+            <error>No stats available: package referenced, but not analyzed.</error>
+        </Package>
+    </Packages>
+
+    <Cycles>
+    </Cycles>
+</JDepend>
