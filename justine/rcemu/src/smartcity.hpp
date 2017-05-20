@@ -273,7 +273,7 @@ public:
   //We are going to print out our Adjacency Matrix to a file.
     void printMatrix(AdjacencyList alist){
 
-   std::fstream adjacencySparseMatrixFile ( "../adjacencymatrix.txt", std::ios_base::out );
+   std::fstream adjacencyMatrixFile ( "../adjacencymatrix.txt", std::ios_base::out );
 
     for (AdjacencyList::iterator alist_iter = alist.begin(); alist_iter != alist.end(); alist_iter++){
 
@@ -292,7 +292,7 @@ public:
 
   }
 
-    adjacencySparseMatrixFile.close();
+    adjacencyMatrixFile.close();
   }
 
 
