@@ -220,6 +220,7 @@ public:
         std::cout << " alist.size = " << alist.size() << " (deg- >= 1)"<< std::endl;
         std::cout << " SHM/alist.size = " << shm_map_n->size() << std::endl;
 //#endif
+        
         printMatrix(alist);
 
       }
