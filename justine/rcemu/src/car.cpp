@@ -28,10 +28,16 @@
  * desc
  *
  */
-
+#include <ctime>
 #include <car.hpp>
 #include <traffic.hpp>
 #include <boost/iterator/iterator_concepts.hpp>
+
+#include <boost/random/mersenne_twister.hpp> //Random generator.
+
+// Probability mass function. And discrete probability distribution.
+//Will aid us in picking the next node to go to.
+#include <boost/random/discrete_distribution.hpp> 
 
 justine::robocar::Car::Car (
   justine::robocar::Traffic & traffic,

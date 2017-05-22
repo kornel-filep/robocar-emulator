@@ -329,9 +329,9 @@ public:
     //Added logging.
 #ifdef DEBUG
     int lsize = iter->second.m_plist.size();
-    std::cout << "Our lists size: " << lsize << "\n";
+    std::cout << "List size: " << lsize << "\n";
     for (int i = 0; i < lsize; i++){
-      std::cout << "M: " << iter->second.m_alist[to] << " ";
+      std::cout << "M: " << from << " ";
       std::cout << iter->second.m_alist[i] << " ";
       std::cout << iter->second.m_plist[i] << "\n";
     }

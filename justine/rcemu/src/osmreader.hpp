@@ -281,20 +281,17 @@ public:
 
                 alist[vertex_old].first.push_back ( vertex );
 
-                alist[vertex_old].second.push_back ( 0 );
-
-                int out_degree = alist[vertex_old].first.size();
-
-                for (int i = 0; i < out_degree; i++){
-                  
-                  alist[vertex_old].second.at(i) = 1/(double)out_degree;
-                }
-
-
+                alist[vertex_old].second.push_back(0);
 
                 double edge_length = distance ( vertex_old, vertex );
 
                 palist[vertex_old].first.push_back ( edge_length / 3.0 );
+
+                int out_degree = alist[vertex_old].first.size();
+
+                for (int i = 0; i< out_degree; i++){
+                  alist[vertex_old].second.at(i) = 1/(double)out_degree
+                }
 
                 if ( edge_length>max_edge_length )
                   max_edge_length = edge_length;
@@ -316,18 +313,19 @@ public:
                   {
 
                     alist[vertex].first.push_back ( vertex_old );
-                    alist[vertex].second.push_back ( 0 );
+                    alist[vertex].second.push_back (0);
 
-                    int out_degree = alist[vertex].first.size();
-
-                    for (int i = 0; i < out_degree; i++){
                     
-                      alist[vertex].second.at(i) = 1/(double)out_degree;
-                    }
 
                     double edge_length = distance ( vertex_old, vertex );
 
                     palist[vertex].first.push_back ( edge_length / 3.0 );
+
+                    int out_degree = alist[vertex].first.size();
+
+                    for (int i = 0; i < out_defree; i++){
+                      alist[vertex].second.at(i) = 1/(double)out_degree;
+                    }
 
                     if ( edge_length>max_edge_length )
                       max_edge_length = edge_length;
