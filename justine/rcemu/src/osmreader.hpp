@@ -290,7 +290,7 @@ public:
                 int out_degree = alist[vertex_old].first.size();
 
                 for (int i = 0; i< out_degree; i++){
-                  alist[vertex_old].second.at(i) = 1/(double)out_degree
+                  alist[vertex_old].second.at(i) = 1/(double)out_degree;
                 }
 
                 if ( edge_length>max_edge_length )
@@ -323,7 +323,7 @@ public:
 
                     int out_degree = alist[vertex].first.size();
 
-                    for (int i = 0; i < out_defree; i++){
+                    for (int i = 0; i < out_degree; i++){
                       alist[vertex].second.at(i) = 1/(double)out_degree;
                     }
 
