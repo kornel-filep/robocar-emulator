@@ -326,7 +326,17 @@ public:
   int alist_inv ( osmium::unsigned_object_id_type from, osmium::unsigned_object_id_type to ) const
   {
     shm_map_Type::iterator iter=shm_map->find ( from );
-
+    //Added logging.
+#ifdef DEBUG
+    int lsize = iter->second.m_plist.size();
+    std::cout << "Our lists size: " << lsize << "\n";
+    for (int i = 0; i < lsize; i++){
+      std::cout << "M: " << iter->second.m_alist[to] << " ";
+      std::cout << iter->second.m_alist[i] << " ";
+      std::cout << iter->second.m_plist[i] << "\n";
+    }
+    std::cout << "--------------------- \n"
+#endif 
     int ret = -1;
 
     for ( uint_vector::iterator noderefi = iter->second.m_alist.begin();

@@ -204,6 +204,7 @@ public:
 
             //So we are iterating through. After thinking it through,
             //Thats the place for our probability part.
+              
               for ( ProbabilityVect::iterator p = iter->second.second.begin();
                  p!= iter->second.second.end(); ++p )
                 {
