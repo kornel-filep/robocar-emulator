@@ -304,39 +304,23 @@ public:
     return iter->second.m_alist.size();
   }
 
-  osmium::unsigned_object_id_type alist ( osmium::unsigned_object_id_type from, int to ) const
+  d_vector getPVector ( osmium::unsigned_object_id_type from ) const
   {
     shm_map_Type::iterator iter=shm_map->find ( from );
-    //Adding a debug part to our alist.
-#ifdef DEBUG
-    int lsize = iter->second.m_plist.size();
-    std::cout << "Listsize = " << lsize << "\n";
+    //There was some useless debugging.
 
-    for (int i = 0; i < listsize; i++){
-      std::cout << "Message: " << iter->second.m_alist[to] << " ";
-      std::cout << iter->second.m_alist[i] << " ";
-      std::cout << iter->second.m_plist[i] << "\n";
-    }
-    std::cout << "\n";
-#endif
+    return iter->second.m_plist;
+  }
 
+  osmium::unsigned_object_id_type alist (osmium::unsigned_object_id_type from, int to) const {
+    shm_map_Type::iterator iter=shm_map->find (from);
     return iter->second.m_alist[to];
   }
 
   int alist_inv ( osmium::unsigned_object_id_type from, osmium::unsigned_object_id_type to ) const
   {
     shm_map_Type::iterator iter=shm_map->find ( from );
-    //Added logging.
-#ifdef DEBUG
-    int lsize = iter->second.m_plist.size();
-    std::cout << "List size: " << lsize << "\n";
-    for (int i = 0; i < lsize; i++){
-      std::cout << "M: " << from << " ";
-      std::cout << iter->second.m_alist[i] << " ";
-      std::cout << iter->second.m_plist[i] << "\n";
-    }
-    std::cout << "--------------------- \n"
-#endif 
+    //Added logging. Then removed.
     int ret = -1;
 
     for ( uint_vector::iterator noderefi = iter->second.m_alist.begin();
